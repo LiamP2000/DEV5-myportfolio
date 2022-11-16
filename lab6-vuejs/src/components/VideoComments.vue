@@ -15,6 +15,29 @@ import { ref, reactive, onMounted } from 'vue';
       });
   });
 
+  const addComment = () => {
+    let data = {
+      user: "Liam",
+      text: text.value
+    };
+    fetch("https://lab5-p379.onrender.com/api/v1/messages/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(comment),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        comments.comments.push({
+          _id: data.data._id,
+          user: data.data.user,
+          text: data.data.text,
+        });
+      });
+  };
+
   
 
 
