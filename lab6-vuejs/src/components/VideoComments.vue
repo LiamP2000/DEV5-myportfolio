@@ -25,11 +25,11 @@ import { ref, reactive, onMounted } from 'vue';
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(comment),
+      body: JSON.stringify(data),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        console.log("werkt?");
         comments.comments.push({
           _id: data.data._id,
           user: data.data.user,
@@ -47,6 +47,21 @@ import { ref, reactive, onMounted } from 'vue';
 
 <template>
   <div>
+    <div  >
+        <ul class="comments">
+            <li v-for="comment in comments.comments" :key="comment.id">
+                <div class="comment">
+                    <h3>{{comment.user}}</h3>
+                    <p>{{comment.text}}</p>
+                </div>
+            </li>
+        </ul>
+
+        <div class="commentInput">
+            <input type="text" placeholder="Type comment" v-model="text" />
+            <button @click="addComment">Add comment</button>
+        </div>
+    </div>
   </div>
 </template>
 
