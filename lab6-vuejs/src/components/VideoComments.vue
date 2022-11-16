@@ -2,44 +2,28 @@
 
 import { ref, reactive, onMounted } from 'vue';
 
+  let comments = reactive({ comments : [] });
+  let text = ref("");
 
- let title = ref("");
- //let comments = reactive([]);
- let comment = ref('');
+  onMounted(() => {
+    // fetch API
+    fetch("https://lab5-p379.onrender.com/api/v1/messages/")
+      .then((response) => response.json())
+      .then((data) => {
+        comments.comments = data;
+        console.log(data);
+      });
+  });
 
- const addComment = () => {
-   comments.push(title.value);
-   console.log("werkt et?");
- };
+  
 
- //fetch reactions 
- onMounted(() => {
-  // fetch API
-  let api_url = "https://lab5-p379.onrender.com/api/v1/messages/"
-    fetch(api_url)
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data);
-        });
-            
-        })
+
+
 
 </script>
 
 <template>
   <div>
-    <h1>Reactions</h1>
-
-    
-
-    <ul>
-      <li v-for="comment in comments" :key="comment">
-        {{ comment }}
-      </li>
-    </ul>
-
-    <input type="text" v-model="title">
-    <button @click="addComment">Add comment</button>
   </div>
 </template>
 
