@@ -10,22 +10,29 @@
 
 <template>
   <div class="app">
-    <VideoPlayer />
-    <VideoDetails />
-    <VideoComments />
-
+    <div class="videoPlayer"><VideoPlayer /></div>
+    <div class="videoDetails"><VideoDetails /></div>
+    <div class="videoComments"><VideoComments /></div>
   </div>
 </template>
 
 <style scoped>
-  .app {
-    display: grid;
-    grid-template-columns: 8fr 4fr;
-    grid-template-rows: 4fr 8fr;
-    grid-template-areas:
-      "video video"
-      "details comments";
+  .app {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "videoPlayer videoPlayer videoDetails"
+    "videoPlayer videoPlayer videoComments"
+    "videoPlayer videoPlayer videoComments";
+}
 
-  }
+.videoPlayer { grid-area: videoPlayer; }
+
+.videoDetails { grid-area: videoDetails; }
+
+.videoComments { grid-area: videoComments; }
+
 
 </style>
