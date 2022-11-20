@@ -61,6 +61,7 @@ import { ref, reactive, onMounted } from 'vue';
             <input type="text" placeholder="Type comment" v-model="text" />
             <button @click="addComment">Add comment</button>
         </div>
+        
     </div>
   </div>
 </template>
