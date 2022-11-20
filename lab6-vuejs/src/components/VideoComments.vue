@@ -67,4 +67,10 @@ import { ref, reactive, onMounted } from 'vue';
 
 <style scoped>
 
+.comments{
+    width: 100;
+    height: 500px;
+    overflow: scroll;
+}
+
 </style>
